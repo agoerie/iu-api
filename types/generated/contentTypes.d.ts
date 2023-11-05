@@ -683,18 +683,20 @@ export interface ApiArtikelArtikel extends Schema.CollectionType {
     singularName: 'artikel';
     pluralName: 'artikels';
     displayName: 'Artikel';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String & Attribute.Required;
-    Content: Attribute.Blocks;
+    title: Attribute.String & Attribute.Required;
+    shortDescription: Attribute.Blocks;
     unit: Attribute.Relation<
       'api::artikel.artikel',
       'manyToOne',
       'api::unit.unit'
     >;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -725,9 +727,9 @@ export interface ApiUnitUnit extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String & Attribute.Required & Attribute.Unique;
-    Address: Attribute.Blocks;
-    Phone: Attribute.String & Attribute.Unique;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    address: Attribute.Blocks;
+    phone: Attribute.String & Attribute.Unique;
     artikels: Attribute.Relation<
       'api::unit.unit',
       'oneToMany',

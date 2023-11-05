@@ -4,18 +4,19 @@
   "info": {
     "singularName": "artikel",
     "pluralName": "artikels",
-    "displayName": "Artikel"
+    "displayName": "Artikel",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Content": {
+    "shortDescription": {
       "type": "blocks"
     },
     "unit": {
@@ -23,6 +24,9 @@
       "relation": "manyToOne",
       "target": "api::unit.unit",
       "inversedBy": "artikels"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

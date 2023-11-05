@@ -12,15 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "Address": {
+    "address": {
       "type": "blocks"
     },
-    "Phone": {
+    "phone": {
       "type": "string",
       "required": false,
       "unique": true
