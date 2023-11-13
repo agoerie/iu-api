@@ -30,6 +30,12 @@
       "relation": "oneToMany",
       "target": "api::artikel.artikel",
       "mappedBy": "unit"
+    },
+    "testimonis": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimoni.testimoni",
+      "mappedBy": "unit"
     }
   }
 }

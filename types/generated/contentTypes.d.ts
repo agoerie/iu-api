@@ -715,6 +715,47 @@ export interface ApiArtikelArtikel extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestimoniTestimoni extends Schema.CollectionType {
+  collectionName: 'testimonis';
+  info: {
+    singularName: 'testimoni';
+    pluralName: 'testimonis';
+    displayName: 'Testimoni';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    testimoni: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
+    unit: Attribute.Relation<
+      'api::testimoni.testimoni',
+      'manyToOne',
+      'api::unit.unit'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimoni.testimoni',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimoni.testimoni',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiUnitUnit extends Schema.CollectionType {
   collectionName: 'units';
   info: {
@@ -734,6 +775,11 @@ export interface ApiUnitUnit extends Schema.CollectionType {
       'api::unit.unit',
       'oneToMany',
       'api::artikel.artikel'
+    >;
+    testimonis: Attribute.Relation<
+      'api::unit.unit',
+      'oneToMany',
+      'api::testimoni.testimoni'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -762,6 +808,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::artikel.artikel': ApiArtikelArtikel;
+      'api::testimoni.testimoni': ApiTestimoniTestimoni;
       'api::unit.unit': ApiUnitUnit;
     }
   }
